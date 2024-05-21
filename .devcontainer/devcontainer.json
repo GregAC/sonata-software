@@ -1,0 +1,8 @@
+{
+  "image": "ghcr.io/GregAC/sonata-software-container:latest",
+  "remoteUser": "sonata",
+  "containerUser": "sonatga",
+  "onCreateCommand": "cd /workspace && git clone https://github.com/lowRISC/sonata-system.git",
+  "onStartCommand": "cd /workspace/sonata-software && nix develop "github:lowRISC/lowrisc-nix#cheriot"
+}
+
