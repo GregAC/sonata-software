@@ -1,8 +1,18 @@
 {
-  "image": "ghcr.io/GregAC/sonata-software-container:latest",
+  "image": "ghcr.io/gregac/sonata-software-container:latest",
   "remoteUser": "sonata",
-  "containerUser": "sonatga",
-  "onCreateCommand": "cd /workspace && git clone https://github.com/lowRISC/sonata-system.git",
-  "onStartCommand": "cd /workspace/sonata-software && nix develop "github:lowRISC/lowrisc-nix#cheriot"
+  "containerUser": "sonata",
+  "onCreateCommand": "cd /workspaces && git clone https://github.com/lowRISC/sonata-system.git",
+  "settings": {
+    "terminal.integrated.profiles.linux": {
+      "Nix devshell": {
+        "path": "nix",
+        "args": [
+           "develop",
+           "github:lowRISC/lowrisc-nix#cheriot"
+        ]
+      }
+    },
+    "terminal.integrated.defaultProfile.linux": "Nix devshell"
+  }
 }
-
