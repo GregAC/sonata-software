@@ -9,7 +9,7 @@
         "path": "nix",
         "args": [
            "develop",
-           "github:gregac/sonata-software/dev_container_upgrade"
+           "github:gregac/sonata-software/devcontainer_upgrade#env-with-sim"
         ]
       }
     },

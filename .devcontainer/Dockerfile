@@ -35,7 +35,7 @@ RUN sudo bash -c 'echo "substituters = https://cache.nixos.org https://nix-cache
 
 # Download/build/install everything required for the nix devshell by starting it
 # to run 'true' and immediately exit
-RUN nix develop "github:gregac/sonata-software/dev_container_upgrade" -c "true"
+RUN nix develop "github:gregac/sonata-software/devcontainer_upgrade#env-with-sim" -c "true"
 
 ENV SHELL /bin/bash
-CMD nix develop "github:gregac/sonata-software/dev_container_upgrade"
+CMD nix develop "github:gregac/sonata-software/devcontainer_upgrade#env-with-sim"
