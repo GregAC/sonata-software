@@ -167,11 +167,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716759981,
-        "narHash": "sha256-lmk9U0ggNGNNzZxO6fH15xBpmgiV019umOFU9AgGy0o=",
+        "lastModified": 1716764048,
+        "narHash": "sha256-GeTFTTVs+SqM+0DIABmpYyF/wJWvdGFNZAgF6W2sfDQ=",
         "owner": "gregac",
         "repo": "sonata-system",
-        "rev": "4b5b31003bd57e615c9c1e8978478503addd0a06",
+        "rev": "7a834a8ba4db74976e1f21c73996da3e38876828",
         "type": "github"
       },
       "original": {

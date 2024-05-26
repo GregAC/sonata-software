@@ -33,7 +33,14 @@
         };
         env-with-sim = pkgs.mkShell {
           name = "sonata-sw-with-sim";
-          packages = default.nativeBuildInputs ++ [sonataSystemPkgs.sonata-simulator];
+          packages = default.nativeBuildInputs ++
+          (with sonataSystemPkgs; [
+            sonata-simulator
+            sonata-sim-boot-stub
+          ]);
+          shellHook = ''
+            export SONATA_SIM_BOOT_STUB=${sonataSystemPkgs.sonata-sim-boot-stub.out}/share/sim_boot_stub
+          '';
         };
       };
     };
