@@ -1,7 +1,7 @@
 {
   description = "Sonata Software";
   inputs = {
-    sonata-system.url = "github:lowRISC/sonata-system";
+    sonata-system.url = "github:gregac/sonata-system/verilator_v5";
     lowrisc-nix.follows = "sonata-system/lowrisc-nix";
     nixpkgs.follows = "lowrisc-nix/nixpkgs";
     flake-utils.follows = "lowrisc-nix/flake-utils";
