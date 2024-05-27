@@ -1,7 +1,7 @@
 {
   description = "Sonata Software";
   inputs = {
-    sonata-system.url = "github:lowRISC/sonata-system";
+    sonata-system.url = "github:gregac/sonata-system/v5_verilator_fix";
     lowrisc-nix.follows = "sonata-system/lowrisc-nix";
     nixpkgs.follows = "lowrisc-nix/nixpkgs";
     flake-utils.follows = "lowrisc-nix/flake-utils";
@@ -33,7 +33,15 @@
         };
         env-with-sim = pkgs.mkShell {
           name = "sonata-sw-with-sim";
-          packages = default.nativeBuildInputs ++ [sonataSystemPkgs.sonata-simulator];
+          packages =
+            (with sonataSystemPkgs; [
+              sonata-simulator
+              sonata-sim-boot-stub
+            ])
+            ++ default.nativeBuildInputs;
+          shellHook = ''
+            export SONATA_SIM_BOOT_STUB=${sonataSystemPkgs.sonata-sim-boot-stub.out}/share/sim_boot_stub
+          '';
         };
       };
     };

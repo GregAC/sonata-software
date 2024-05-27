@@ -1,5 +1,5 @@
 {
-  "image": "ghcr.io/gregac/sonata-software-container:latest",
+  "image": "ghcr.io/gregac/sonata-software-container:test",
   "remoteUser": "sonata",
   "containerUser": "sonata",
   "onCreateCommand": "git submodule init && git submodule update --init --recursive",
@@ -9,7 +9,7 @@
         "path": "nix",
         "args": [
            "develop",
-           "github:lowRISC/sonata-software"
+           "github:gregac/sonata-software/devcontainer-test#env-with-sim"
         ]
       }
     },
