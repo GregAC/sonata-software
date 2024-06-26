@@ -24,12 +24,17 @@ compartment("led_walk_raw")
     add_deps("debug")
     add_files("compartments/led_walk_raw.cc")
 
+compartment("hello_world")
+    add_deps("debug")
+    add_files("compartments/hello_world.cc")
+
 compartment("echo")
     add_files("compartments/echo.cc")
 
 compartment("lcd_test")
     add_files("display_drivers/core/lcd_base.c")
     add_files("display_drivers/core/m3x6_16pt.c")
+    add_files("display_drivers/core/lucida_console_10pt.c")
     add_files("display_drivers/st7735/lcd_st7735.c")
     add_files("compartments/lcd_test.cc")
 
@@ -152,3 +157,27 @@ firmware("proximity_test")
         }, {expand = false})
     end)
     after_link(convert_to_uf2)
+
+firmware("hello_world_demo")
+    add_deps("freestanding", "led_walk_raw", "hello_world")
+    on_load(function(target)
+        target:values_set("board", "$(board)")
+        target:values_set("threads", {
+            {
+                compartment = "led_walk_raw",
+                priority = 2,
+                entry_point = "start_walking",
+                stack_size = 0x200,
+                trusted_stack_frames = 1
+            },
+            {
+                compartment = "hello_world",
+                priority = 1,
+                entry_point = "entry_point",
+                stack_size = 0x200,
+                trusted_stack_frames = 1
+            },
+        }, {expand = false})
+    end)
+    after_link(convert_to_uf2)
+
